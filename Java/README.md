@@ -200,3 +200,114 @@ class Solution {
     }
 }
 ```
+
+### 최빈값 구하기
+```
+class Solution {
+    public int solution(int[] array) {
+        int answer = 0;
+        
+        int [] index = new int[1000];
+        
+        for(int i = 0;i<array.length;i++) {
+        	index[array[i]]++;
+        }
+        int max = 0;
+        for(int i = 0; i<index.length;i++){
+        	if(max<index[i]) {
+        		max=index[i];
+        	}
+        }
+        int str = 0; int cnt = 0;
+        for(int i = 0;i<index.length;i++) {
+        	if(index[i]==max) {
+        		str = i;cnt++;
+        	}
+        }
+        if(cnt==1) {
+        	answer = str;
+        }else {
+        	answer = -1;
+        }
+        
+        return answer;
+    }
+}
+```
+### 짝수는 싫어요
+```
+class Solution {
+    public int[] solution(int n) {
+        int[] answer = new int[(n/2)+(n%2)];
+        int idx=0;
+        for(int i = 1;i<=n;i++) {
+        	if(i%2==1) {
+        		answer[idx] = i;idx++;
+        	}else {
+        		continue;
+        	}
+        }
+        return answer;
+    }
+}
+```
+### 피자 나눠먹기
+```
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        if(n==0) {
+        	answer = 0;
+        }else if(n%7!=0){
+        	answer = n/7+1;
+        }else {
+        	answer = n/7;
+        }
+        return answer;
+    }
+}
+```
+### 진료 순서 정하기
+```
+        int[] answer = new int[emergency.length];
+        
+        int j = 1; int idx = 0;int max = 0;
+        
+        while(j<emergency.length+1) {
+        for(int i = 0;i<emergency.length;i++) {
+        	if(emergency[i]>max) {
+        		max = emergency[i];idx = i;
+        		}
+        	}
+        	answer[idx] = j;j++;max = 0;emergency[idx]=0;idx=0;
+        }
+        return answer;
+    }
+}
+```
+### 순서쌍의 개수
+```
+class Solution {
+    public int solution(int n) {
+    	int cnt = 0;
+    	for(int i = 1;i<=n;i++) {
+    		if(n%i==0) cnt++;
+    	}
+        int answer = cnt;
+        return answer;
+    }
+}
+```
+### 개미 군단
+```
+class Solution {
+    public int solution(int hp) {
+    	int n1,n2,n3;
+    	n1 = hp/5; hp = hp-n1*5;
+    	n2 = hp/3;hp=hp-n2*3;
+    	n3 = hp;
+        int answer = n1+n2+n3;
+        return answer;
+    }
+}
+```
