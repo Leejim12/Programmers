@@ -311,3 +311,32 @@ class Solution {
     }
 }
 ```
+
+### 구슬을 나누는 경우의수
+```
+class Solution {
+	static double fac(double a) {
+		double as = 1;
+		if(a==0)return 1;
+		while(a>0) {
+			as = as*a;
+			a--;
+		}return as;
+	}
+    public static double solution(double balls,double share) {
+    	double answer = 0; double n; double m;
+    	if(share ==0 || balls == share) return 1;
+    	
+    	// 그대로
+    	if(share<balls/2) {
+    	 n = balls;m = share;
+    	// else : share : balls-share
+    	}else {
+    	n = balls;m = balls-share;
+    	}
+    	
+    	answer = Math.round((fac(balls)/(fac(balls-share)*fac(share))));
+        return answer;
+    }
+}
+```
