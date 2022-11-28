@@ -340,3 +340,66 @@ class Solution {
     }
 }
 ```
+
+### 캐릭터의 좌표
+```
+class Solution {
+    public int[] solution(String[] keyinput, int[] board) {
+        int[] answer = {0,0};
+        int maxrow = board[0]/2;
+        int minrow = -board[0]/2;
+        int maxcol = board[1]/2;
+        int mincol = -board[1]/2;
+        for(int i = 0;i<keyinput.length;i++) {
+        	if(keyinput[i].equals("up")) {
+        		if(answer[1]==maxcol)continue;
+        		else {
+        			answer[1]++;
+        		}
+        	}else if(keyinput[i].equals("down")) {
+        		if(answer[1]==mincol)continue;
+        		else {
+        			answer[1]--;
+        		}
+        	}else if(keyinput[i].equals("left")) {
+        		if(answer[0]==minrow)continue;
+        		else {
+        			answer[0]--;
+        		}
+        	}else if(keyinput[i].equals("right")) {
+        		if(answer[0]==maxrow)continue;
+        		else {
+        			answer[0]++;
+        		}
+        	}
+        }
+        return answer;
+    }
+}
+```
+
+외계어 사전
+```
+import java.util.Arrays;
+class Solution {
+    public int solution(String[] spell, String[] dic) {
+        int answer = 0;
+        String[] temp;
+        int tempcnt = 0;
+        for(int i = 0;i<dic.length;i++) {
+        	temp = dic[i].split(""); // dic i번째 요소 --> 일단 쪼갬.
+        	temp = Arrays.stream(temp).distinct().toArray(String[]::new);
+        	tempcnt = 0;
+        	for(int j = 0;j<temp.length;j++) { // temp(쪼개진 애)가 spell을 순회할거임.
+        		for(int k =0;k<spell.length;k++) {
+        			if(temp[j].equals(spell[k])) {
+        				tempcnt++;break;
+        			}
+        		}
+        		if(tempcnt==spell.length) return 1;
+        	}
+        }
+        return 2;
+    }
+}
+```
